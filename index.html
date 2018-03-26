@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Circles</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <canvas id='canvas' width='800' height='800'></canvas>
+    <script>
+      // let colors = ['E50800', 'E52E00', 'E54E00', 'E57200', 'E58600', 'E59F00', 'E5B500', 'E5C900', 'E3E500', 'BDE500', '94E500', '72E500', '5CE500', '42E500', '11E500', '00E511', '00E546', '00E573', '00E59D', '00E5D2', '00C6E5', '009BE5', '0075E5', '005BE5', '0041E5', '0030E5', '0017E5', '0000E5', '2300E5', '4900E5', '6200E5', '7A00E5', '9100E5', '9A00E5', 'B300E5', 'C300E5', 'D300E5', 'E500E1', 'E500CC', 'E500B4', 'E5009B', 'E50084', 'E50069', 'E5004B', 'E50033', 'E5001B'];
+      let colors = ['ffaaaa'];
+      let index = 0;
+      var canvas = document.getElementById('canvas');
+      canvas.style.backgroubd = 'black'
+      var ctx = canvas.getContext('2d');
+      setInterval(() => {
+        index = index + 1;
+        if (index === colors.length) {
+          index = 0;
+        }
+        ctx.strokeStyle = '#' + colors[index];
+      }, 50);
+      var circle = function(x, y, radius, angle1, angle2, boolean) {
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, angle1, angle2, boolean);
+        ctx.stroke();
+      }
+      $('#canvas').mousemove(function(event) {
+        circle(event.pageX, event.pageY, 20, 0, Math.PI * 2, false);
+      });
+    </script>
+  </body>
+</html>
